@@ -1,0 +1,119 @@
+[gd_scene load_steps=7 format=3 uid="uid://dkt2641stbrr4"]
+
+[ext_resource type="Script" path="res://Menu/Menu.gd" id="1_64o32"]
+[ext_resource type="VideoStream" path="res://videos/background_menu.ogv" id="2_i78vh"]
+[ext_resource type="FontFile" uid="uid://b5crdedyu6jr" path="res://fonts/Parikesit-0ZYR.ttf" id="3_texbs"]
+[ext_resource type="PackedScene" uid="uid://i3cl0300n8gn" path="res://Fader/Fader.tscn" id="4_iqk0u"]
+[ext_resource type="PackedScene" uid="uid://cno74obt8j0qh" path="res://Menu/settings_menu/settings_menu.tscn" id="5_x6hum"]
+
+[sub_resource type="FontVariation" id="FontVariation_vv4ay"]
+base_font = ExtResource("3_texbs")
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_64o32")
+
+[node name="Menu" type="CanvasLayer" parent="."]
+
+[node name="Fader" parent="Menu" instance=ExtResource("4_iqk0u")]
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="Menu"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stream = ExtResource("2_i78vh")
+autoplay = true
+expand = true
+loop = true
+
+[node name="NameContainer" type="VBoxContainer" parent="Menu"]
+light_mask = 4
+visibility_layer = 4
+anchors_preset = -1
+anchor_left = 0.350694
+anchor_right = 0.649306
+anchor_bottom = 0.287037
+grow_horizontal = 2
+alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="NameLabel" type="Label" parent="Menu/NameContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontVariation_vv4ay")
+theme_override_font_sizes/font_size = 48
+text = "Killing Frenzy"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="ButtonsContainer" type="VBoxContainer" parent="Menu"]
+light_mask = 4
+visibility_layer = 4
+anchors_preset = -1
+anchor_left = 0.350694
+anchor_top = 0.376543
+anchor_right = 0.649306
+anchor_bottom = 0.862654
+offset_top = -4.57764e-05
+offset_bottom = 6.10352e-05
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 60
+metadata/_edit_use_anchors_ = true
+
+[node name="StartButton" type="Button" parent="Menu/ButtonsContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_texbs")
+theme_override_font_sizes/font_size = 50
+text = "START"
+
+[node name="OptionsButton" type="Button" parent="Menu/ButtonsContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_texbs")
+theme_override_font_sizes/font_size = 50
+text = "OPTIONS"
+
+[node name="QuitButton" type="Button" parent="Menu/ButtonsContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_texbs")
+theme_override_font_sizes/font_size = 50
+text = "QUIT"
+
+[node name="Settings_menu" parent="." instance=ExtResource("5_x6hum")]
+layout_mode = 1
+
+[connection signal="pressed" from="Menu/ButtonsContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="Menu/ButtonsContainer/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="Menu/ButtonsContainer/QuitButton" to="." method="_on_quit_button_pressed"]
