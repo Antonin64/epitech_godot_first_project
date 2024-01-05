@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://vdm2xork53wj"]
+[gd_scene load_steps=4 format=3 uid="uid://vdm2xork53wj"]
 
 [ext_resource type="PackedScene" uid="uid://i3cl0300n8gn" path="res://Fader/Fader.tscn" id="1_4tk2g"]
 [ext_resource type="Script" path="res://Game/Game.gd" id="1_h2s0e"]
+[ext_resource type="PackedScene" uid="uid://dgei802145kvq" path="res://Game/Map/SpawningRoom.tscn" id="3_xe31v"]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_h2s0e")
@@ -10,3 +11,6 @@ script = ExtResource("1_h2s0e")
 format = 2
 
 [node name="Fader" parent="." instance=ExtResource("1_4tk2g")]
+
+[node name="SpawningRoom" parent="." instance=ExtResource("3_xe31v")]
+position = Vector2(738, 293)
